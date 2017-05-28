@@ -16,7 +16,9 @@ namespace RemMe.ViewModels {
         private IPageService _pageService;
         private IRemFileStore _remFileStore;
         private bool _isDataLoaded;
+        private bool _isSearchActive;
 
+        private List<RemFileViewModel> _remFiles { get; set;  } = new List<RemFileViewModel>();
         public ObservableCollection<RemFileViewModel> RemFiles { get; private set; } = new ObservableCollection<RemFileViewModel>();
 
         private RemFileViewModel _selectedRemFile;
@@ -25,9 +27,19 @@ namespace RemMe.ViewModels {
             set { SetValue(ref _selectedRemFile, value); }
         }
 
+        private string _searchText;
+        public string SearchText {
+            get { return _searchText; }
+            set {
+                SetValue(ref _searchText, value);
+                Search(_searchText);
+            }
+        }
+
         public ICommand LoadDataCommand { get; private set; }
         public ICommand AddRemFileCommand { get; private set; }
         public ICommand DeleteRemFileCommand { get; private set; }
+        public ICommand SearchCommand { get; private set; }
 
         public MainPageViewModel(IRemFileStore remFileStore, IPageService pageService) {
             this._pageService = pageService;
@@ -36,6 +48,25 @@ namespace RemMe.ViewModels {
             LoadDataCommand = new Command(async () => await LoadData());
             AddRemFileCommand = new Command(async () => await AddRemFile());
             DeleteRemFileCommand = new Command<RemFileViewModel>(async r => await DeleteRemFile(r));
+            SearchCommand = new Command<string>(Search);
+
+            
+        }
+
+        private void Search(string text) {
+            IEnumerable<RemFileViewModel> searchedRemFiles = null;
+            if (!_isSearchActive) _remFiles = new List<RemFileViewModel>(RemFiles);
+            if (String.IsNullOrWhiteSpace(text)) {
+                searchedRemFiles = _remFiles;
+                _isSearchActive = false;
+            } else {
+                searchedRemFiles = _remFiles.Where(r => r.Title.Contains(text));
+                _isSearchActive = true;
+            }
+            RemFiles.Clear();
+            foreach (var r in searchedRemFiles) {
+                RemFiles.Add(r);
+            }
         }
 
         private async Task DeleteRemFile(RemFileViewModel remFileViewModel) {
@@ -63,9 +94,16 @@ namespace RemMe.ViewModels {
 
             viewModel.RemFileAdded += (source, remFile) => {
                 RemFiles.Add(new RemFileViewModel(remFile));
-            };
+            };       
 
             await this._pageService.PushAsync(new RemFileDetailPage(viewModel));
+        }
+
+        private void RefreshViewedRemFiles() {
+            RemFiles.Clear();
+            foreach (var r in _remFiles) {
+                RemFiles.Add(r);
+            }
         }
     }
 }

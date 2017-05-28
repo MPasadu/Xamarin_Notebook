@@ -8,7 +8,7 @@
              Title="RemMe">
 
     <RelativeLayout BackgroundColor="Yellow">
-        <StackLayout x:Name="SearchBar" BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="Start" Orientation="Horizontal"
+        <StackLayout x:Name="SearchBarHolder" BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="Start" Orientation="Horizontal"
                      RelativeLayout.HeightConstraint="{ConstraintExpression
                         Type=RelativeToParent,
                         Property=Height,
@@ -19,24 +19,27 @@
                         Property=Width,
                         Factor=1,
                         Constant=0}">
-            <SearchBar Placeholder="Search..." HorizontalOptions="FillAndExpand" WidthRequest="250"/>
+            <SearchBar x:Name="SearchBar" Placeholder="Search..." HorizontalOptions="FillAndExpand" WidthRequest="250" 
+                       SearchCommand="{Binding SearchCommand}" 
+                       SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
+                       Text="{Binding SearchText, Mode=TwoWay}"/>
             <!--<button text="filter" horizontaloptions="end"/> maybe implementing it later-->
         </StackLayout>
 
         <ListView x:Name="listView" BackgroundColor="Aqua" ItemsSource="{Binding RemFiles}"
                   RelativeLayout.WidthConstraint="{ConstraintExpression
                         Type=RelativeToParent,
-                        ElementName=SearchBar,
+                        ElementName=SearchBarHolder,
                         Property=Width,
                         Factor=1}"
                   RelativeLayout.HeightConstraint="{ConstraintExpression
                         Type=RelativeToParent,
-                        ElementName=SearchBar,
+                        ElementName=SearchBarHolder,
                         Property=Height,
                         Factor=1}"
                   RelativeLayout.YConstraint="{ConstraintExpression
                         Type=RelativeToView,
-                        ElementName=SearchBar,
+                        ElementName=SearchBarHolder,
                         Property=Height,
                         Factor=1}">
             <ListView.ItemTemplate>
