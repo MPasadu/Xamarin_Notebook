@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RemMe.ViewModels {
+    /// <summary>
+    /// Interface for SQLiteRemFileStore
+    /// </summary>
     public interface IRemFileStore {
         Task<IEnumerable<RemFile>> GetRemFileAsync();
         Task<RemFile> GetRemFile(int id);

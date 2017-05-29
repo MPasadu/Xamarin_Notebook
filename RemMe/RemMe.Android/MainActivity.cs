@@ -28,7 +28,8 @@ namespace RemMe.Droid {
             LoadApplication(new App());
         }
 
- 
+        #region UnhandledException Catcher Methods
+
         private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs) {
             var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
             LogUnhandledException(newExc);
@@ -42,7 +43,7 @@ namespace RemMe.Droid {
         internal static void LogUnhandledException(Exception exception) {
             try {
                 const string errorFileName = "Fatal.log";
-                var libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal); // iOS: Environment.SpecialFolder.Resources
+                var libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
                 var errorFilePath = Path.Combine(libraryPath, errorFileName);
                 var errorMessage = String.Format("Time: {0}\r\nError: Unhandled Exception\r\n{1}",
                 DateTime.Now, exception.ToString());
@@ -81,8 +82,10 @@ namespace RemMe.Droid {
                 .SetMessage(errorText)
                 .SetTitle("Crash Report")
                 .Show();
-        } 
- 
+        }
+
+        #endregion
+
     }
 }
 

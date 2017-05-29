@@ -2,6 +2,9 @@
 using Xamarin.Forms;
 
 namespace RemMe.ViewModels {
+    /// <summary>
+    /// Interface for PageService
+    /// </summary>
     public interface IPageService {
         Task PushAsync(Page page);
         Task<Page> PopAsync();

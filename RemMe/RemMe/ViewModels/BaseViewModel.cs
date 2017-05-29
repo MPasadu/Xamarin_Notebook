@@ -3,6 +3,9 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace RemMe.ViewModels {
+    /// <summary>
+    /// BaseViewModel implementing PropertyChanged and SetValue for MVVM
+    /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;

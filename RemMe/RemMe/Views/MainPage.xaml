@@ -5,10 +5,10 @@
              xmlns:local="clr-namespace:RemMe"
              x:Class="RemMe.MainPage"
              Padding="0"
-             Title="RemMe">
-
-    <RelativeLayout BackgroundColor="Yellow">
-        <StackLayout x:Name="SearchBarHolder" BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="Start" Orientation="Horizontal"
+             Title="RemMe Notebook">
+    
+    <RelativeLayout>
+        <StackLayout x:Name="SearchBarHolder" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" BackgroundColor="LightGray"
                      RelativeLayout.HeightConstraint="{ConstraintExpression
                         Type=RelativeToParent,
                         Property=Height,
@@ -19,14 +19,13 @@
                         Property=Width,
                         Factor=1,
                         Constant=0}">
-            <SearchBar x:Name="SearchBar" Placeholder="Search..." HorizontalOptions="FillAndExpand" WidthRequest="250" 
+            <SearchBar x:Name="SearchBar" Placeholder="Search..." HorizontalOptions="CenterAndExpand" 
                        SearchCommand="{Binding SearchCommand}" 
                        SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
                        Text="{Binding SearchText, Mode=TwoWay}"/>
-            <!--<button text="filter" horizontaloptions="end"/> maybe implementing it later-->
         </StackLayout>
 
-        <ListView x:Name="listView" BackgroundColor="Aqua" ItemsSource="{Binding RemFiles}"
+        <ListView x:Name="listView" ItemsSource="{Binding RemFiles}" SelectedItem="{Binding SelectedRemFile, Mode=TwoWay}"
                   RelativeLayout.WidthConstraint="{ConstraintExpression
                         Type=RelativeToParent,
                         ElementName=SearchBarHolder,
@@ -45,18 +44,13 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout BackgroundColor="Aqua" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
-                            <Label Text="{Binding Title}" />
-                            <Label Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy a\\t h:mm tt}'}" />
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical" Spacing="0">
+                            <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
+                            <Label Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy a\\t h:mm tt}'}" HorizontalOptions="Center" FontSize="12"/>
                         </StackLayout>
                         <ViewCell.ContextActions>
                             <MenuItem 
 							Text="Delete" 
-							IsDestructive="true" 
-							Command="{Binding Source={x:Reference page}, Path=ViewModel.DeleteRemFileCommand}"
-							CommandParameter="{Binding .}" />
-                            <MenuItem 
-							Text="Delete2222" 
 							IsDestructive="true" 
 							Command="{Binding Source={x:Reference page}, Path=ViewModel.DeleteRemFileCommand}"
 							CommandParameter="{Binding .}" />
@@ -66,16 +60,18 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Text="+" Command="{Binding AddRemFileCommand}" RelativeLayout.YConstraint="{ConstraintExpression
+        <Button BackgroundColor="LightGray" Text="+" Command="{Binding AddRemFileCommand}" RelativeLayout.YConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Height,
                             Factor=1,
-                            Constant=-60}"
+                            Constant=-80}"
                          RelativeLayout.XConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Width,
                             Factor=1,
-                            Constant=-100}"/>
+                            Constant=-80}"
+                         WidthRequest="60"
+                         HeightRequest="60"/>
     </RelativeLayout>
 
 </ContentPage>

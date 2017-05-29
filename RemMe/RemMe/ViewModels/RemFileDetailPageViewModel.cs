@@ -10,6 +10,8 @@ using Xamarin.Forms;
 namespace RemMe.ViewModels {
     public class RemFileDetailPageViewModel : BaseViewModel {
 
+        #region Fields
+
         private string _title;
         public string Title {
             get { return _title; }
@@ -30,7 +32,6 @@ namespace RemMe.ViewModels {
 
         public int Id { get; set; }
         public DateTime Date { get; set; }
-
         public RemFile RemFile { get; private set; }
 
         public ICommand SaveCommand { get; private set; }
@@ -41,6 +42,14 @@ namespace RemMe.ViewModels {
         public event EventHandler<RemFile> RemFileAdded;
         public event EventHandler<RemFile> RemFileUpdated;
 
+        #endregion
+
+        /// <summary>
+        /// Constructor for viewmodel associated with RemFileDetailPage.xaml
+        /// </summary>
+        /// <param name="viewModel">RemFileViewModel currently showing details for</param>
+        /// <param name="remFileStore">DB connection</param>
+        /// <param name="pageService">PageService</param>
         public RemFileDetailPageViewModel(RemFileViewModel viewModel, IRemFileStore remFileStore, IPageService pageService) {
 
             if (viewModel == null) throw new ArgumentNullException(nameof(viewModel));
@@ -55,10 +64,18 @@ namespace RemMe.ViewModels {
                 Title = viewModel.Title,
                 Date = viewModel.Date,
                 Description = viewModel.Description,
-            };
 
+
+            };
+            if (RemFile.Date == DateTime.MinValue) RemFile.Date = DateTime.Now;
         }
 
+        #region Command Methods
+
+        /// <summary>
+        /// Save changes to new or existing remFile model.
+        /// </summary>
+        /// <returns>Task completed</returns>
         private async Task Save() {
             if (String.IsNullOrWhiteSpace(RemFile.Title)) {
                 await _pageService.DisplayAlert("Error", "Please enter a title.", "OK");
@@ -79,5 +96,7 @@ namespace RemMe.ViewModels {
 
             await _pageService.PopAsync();
         }
+
+        #endregion
     }
 }

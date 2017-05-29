@@ -2,21 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RemMe.Views.RemFileDetailPage">
-    <StackLayout BackgroundColor="Yellow" HorizontalOptions="Fill" VerticalOptions="Center">
-        <TableView Intent="Form">
-            <TableRoot>
-                <TableSection Title="Title">
-                    <EntryCell Label="Title" Text="{Binding Path=RemFile.Title}" />
-                </TableSection>
-                <TableSection Title="Description">
-                    <EntryCell Label="Description" Text="{Binding Path=RemFile.Description}" />
-                </TableSection>
-                <TableSection>
-                    <ViewCell>
-                        <Button Text="Save" Command="{Binding SaveCommand}" />
-                    </ViewCell>
-                </TableSection>
-            </TableRoot>
-        </TableView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Save" Command="{Binding SaveCommand}"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+        <Label Text="Title" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center"/>
+        <Entry Text="{Binding Path=RemFile.Title}" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+        <Label Text="Description" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center"/>
+        <Editor Text="{Binding Path=RemFile.Description}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
     </StackLayout>
 </ContentPage>

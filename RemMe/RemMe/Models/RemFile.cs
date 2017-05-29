@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace RemMe.Models {
+
+    /// <summary>
+    /// RemFile model
+    /// </summary>
     public class RemFile {
         
         [PrimaryKey, AutoIncrement]

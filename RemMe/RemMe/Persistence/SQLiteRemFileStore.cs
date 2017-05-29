@@ -8,6 +8,10 @@ using RemMe.Models;
 using SQLite;
 
 namespace RemMe.Persistence {
+
+    /// <summary>
+    /// Db connection and tasks for creating, retreiving, deleting RemFiles from/to Db.
+    /// </summary>
     public class SQLiteRemFileStore : IRemFileStore {
 
         private SQLiteAsyncConnection _connection;
