@@ -85,7 +85,7 @@ namespace RemMe.ViewModels {
                 searchedRemFiles = _remFiles;
                 _isSearchActive = false;
             } else {
-                searchedRemFiles = _remFiles.Where(r => r.Title.Contains(text));
+                searchedRemFiles = _remFiles.Where(r => (r.Title.ToLower() + r.Description.ToLower()).Contains(text.ToLower()));               
                 _isSearchActive = true;
             }
             RemFiles.Clear();
