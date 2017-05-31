@@ -27,11 +27,9 @@ Feel free to have a look at the code. Everything should be pushed to the public 
 
 Android:
 
-![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_MainPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_DetailPage_Vertical.png?raw=true)
+![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_MainPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_DetailPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_SearchBar_Vertical.png?raw=true)
 
 ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_MainPage_Horizontal.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_DetailPage_Horizontal.png?raw=true)
-
-![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_SearchBar_Vertical.png?raw=true)
 
 iOS:
 
