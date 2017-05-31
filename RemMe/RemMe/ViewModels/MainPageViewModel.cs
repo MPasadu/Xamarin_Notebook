@@ -145,10 +145,11 @@ namespace RemMe.ViewModels {
                 viewModel.Title = updatedRemFile.Title;
                 viewModel.Date = updatedRemFile.Date;
                 viewModel.Description = updatedRemFile.Description;
-                SelectedRemFile = null;
+                
             };
 
             await _pageService.PushAsync(new RemFileDetailPage(detailPageViewModel));
+            SelectedRemFile = null;
         }
 
         #endregion

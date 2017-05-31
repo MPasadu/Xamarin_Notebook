@@ -35,4 +35,6 @@ Android:
 
 iOS:
 
-Will upload screenshots form the iOS app when my MacBook is repaired...
+![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_MainPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Delete_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_DetailPage_Vertical.png?raw=true)
+
+![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Search_Horizontal.png?raw=true)

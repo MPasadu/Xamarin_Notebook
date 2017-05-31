@@ -7,8 +7,8 @@
     </ContentPage.ToolbarItems>
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
         <Label Text="Title" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center"/>
-        <Entry Text="{Binding Path=RemFile.Title}" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+        <Entry BackgroundColor="WhiteSmoke" Text="{Binding Path=RemFile.Title}" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
         <Label Text="Description" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center"/>
-        <Editor Text="{Binding Path=RemFile.Description}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+        <Editor BackgroundColor="WhiteSmoke" Text="{Binding Path=RemFile.Description}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
     </StackLayout>
 </ContentPage>

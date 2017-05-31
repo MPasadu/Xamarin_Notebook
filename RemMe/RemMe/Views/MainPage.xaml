@@ -8,7 +8,7 @@
              Title="RemMe Notebook">
     
     <RelativeLayout>
-        <StackLayout x:Name="SearchBarHolder" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" BackgroundColor="LightGray"
+        <StackLayout x:Name="SearchBarHolder" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" BackgroundColor="WhiteSmoke"
                      RelativeLayout.HeightConstraint="{ConstraintExpression
                         Type=RelativeToParent,
                         Property=Height,
@@ -19,13 +19,17 @@
                         Property=Width,
                         Factor=1,
                         Constant=0}">
-            <SearchBar x:Name="SearchBar" Placeholder="Search..." HorizontalOptions="CenterAndExpand" 
+            <SearchBar x:Name="SearchBar" Placeholder="Search..." HorizontalOptions="FillAndExpand"
                        SearchCommand="{Binding SearchCommand}" 
                        SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
-                       Text="{Binding SearchText, Mode=TwoWay}"/>
+                       Text="{Binding SearchText, Mode=TwoWay}"
+                       RelativeLayout.WidthConstraint ="{ConstraintExpression 
+                        Type=RelativeToParent, 
+                        Property=Width, 
+                        Factor=1}" />
         </StackLayout>
 
-        <ListView x:Name="listView" ItemsSource="{Binding RemFiles}" SelectedItem="{Binding SelectedRemFile, Mode=TwoWay}"
+        <ListView x:Name="listView" ItemsSource="{Binding RemFiles}" SelectedItem="{Binding SelectedRemFile, Mode=TwoWay}" BackgroundColor="WhiteSmoke"
                   RelativeLayout.WidthConstraint="{ConstraintExpression
                         Type=RelativeToParent,
                         ElementName=SearchBarHolder,
@@ -44,7 +48,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical" Spacing="0">
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="1">
                             <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
                             <Label Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy a\\t h:mm tt}'}" HorizontalOptions="Center" FontSize="12"/>
                         </StackLayout>
@@ -60,7 +64,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button BackgroundColor="LightGray" Text="+" Command="{Binding AddRemFileCommand}" RelativeLayout.YConstraint="{ConstraintExpression
+        <Button BackgroundColor="Gray" Text="+" Command="{Binding AddRemFileCommand}" RelativeLayout.YConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Height,
                             Factor=1,
