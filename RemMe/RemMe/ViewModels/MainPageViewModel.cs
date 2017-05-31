@@ -3,11 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 
 namespace RemMe.ViewModels {
     public class MainPageViewModel : BaseViewModel {
@@ -112,7 +110,7 @@ namespace RemMe.ViewModels {
         private async Task LoadData() {
             if (_isDataLoaded) return;
             _isDataLoaded = true;
-            var remfiles = await _remFileStore.GetRemFileAsync();
+            var remfiles = await _remFileStore.GetRemFilesAsync();
 
             foreach (var r in remfiles) {
                 RemFiles.Add(new RemFileViewModel(r));               
@@ -127,6 +125,7 @@ namespace RemMe.ViewModels {
             var viewModel = new RemFileDetailPageViewModel(new RemFileViewModel(), _remFileStore, _pageService);
             viewModel.RemFileAdded += (source, remFile) => {
                 RemFiles.Add(new RemFileViewModel(remFile));
+                SelectedRemFile = null;
             };       
 
             await this._pageService.PushAsync(new RemFileDetailPage(viewModel));
@@ -139,7 +138,6 @@ namespace RemMe.ViewModels {
         /// <returns></returns>
         private async Task SelectRemFile(RemFileViewModel viewModel) {
             if (viewModel == null) return;
-            SelectedRemFile = null;
 
             var detailPageViewModel = new RemFileDetailPageViewModel(viewModel, _remFileStore, _pageService);
             detailPageViewModel.RemFileUpdated += (source, updatedRemFile) => {
@@ -147,6 +145,7 @@ namespace RemMe.ViewModels {
                 viewModel.Title = updatedRemFile.Title;
                 viewModel.Date = updatedRemFile.Date;
                 viewModel.Description = updatedRemFile.Description;
+                SelectedRemFile = null;
             };
 
             await _pageService.PushAsync(new RemFileDetailPage(detailPageViewModel));

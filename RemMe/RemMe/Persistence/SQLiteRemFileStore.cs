@@ -33,7 +33,7 @@ namespace RemMe.Persistence {
             return await _connection.FindAsync<RemFile>(id);
         }
 
-        public async Task<IEnumerable<RemFile>> GetRemFileAsync() {
+        public async Task<IEnumerable<RemFile>> GetRemFilesAsync() {
             return await _connection.Table<RemFile>().ToListAsync();
         }
 

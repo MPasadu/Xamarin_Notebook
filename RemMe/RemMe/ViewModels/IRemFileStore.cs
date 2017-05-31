@@ -7,7 +7,7 @@ namespace RemMe.ViewModels {
     /// Interface for SQLiteRemFileStore
     /// </summary>
     public interface IRemFileStore {
-        Task<IEnumerable<RemFile>> GetRemFileAsync();
+        Task<IEnumerable<RemFile>> GetRemFilesAsync();
         Task<RemFile> GetRemFile(int id);
         Task AddRemFile(RemFile remFile);
         Task UpdateRemFile(RemFile remFile);
