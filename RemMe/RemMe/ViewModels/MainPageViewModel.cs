@@ -125,10 +125,11 @@ namespace RemMe.ViewModels {
             var viewModel = new RemFileDetailPageViewModel(new RemFileViewModel(), _remFileStore, _pageService);
             viewModel.RemFileAdded += (source, remFile) => {
                 RemFiles.Add(new RemFileViewModel(remFile));
-                SelectedRemFile = null;
+                
             };       
 
             await this._pageService.PushAsync(new RemFileDetailPage(viewModel));
+            SelectedRemFile = null;
         }
 
         /// <summary>

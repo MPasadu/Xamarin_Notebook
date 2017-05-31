@@ -4,6 +4,7 @@ using Moq;
 using RemMe.Views;
 using RemMe.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RemMe.Tests {
 
@@ -17,6 +18,7 @@ namespace RemMe.Tests {
         [SetUp]
         public void Setup() {
             _pageService = new Mock<IPageService>();
+            _pageService.Setup(p => p.PushAsync(It.IsAny<RemFileDetailPage>())).Returns(Task.FromResult(false));
             _remFileStore = new Mock<IRemFileStore>();
             List<RemFile> remFiles = new List<RemFile>() {
                 new RemFile(),
@@ -34,24 +36,6 @@ namespace RemMe.Tests {
             Assert.AreEqual(1, _viewModel.RemFiles.Count);
             _viewModel.DeleteRemFileCommand.Execute(remFileViewModel.Object);
             Assert.AreEqual(0, _viewModel.RemFiles.Count);
-        }
-
-        [Test]
-        public void SelectRemFile_WhenCalled_NavigateAsync() {
-            Mock<RemFileViewModel> remFileViewModel = new Mock<RemFileViewModel>();
-            _viewModel.RemFiles.Add(remFileViewModel.Object);
-            Assert.AreEqual(1, _viewModel.RemFiles.Count);
-
-            _viewModel.SelectCommand.Execute(remFileViewModel.Object);
-            _pageService.Verify(r => r.PushAsync(It.IsAny<RemFileDetailPage>()));
-        }
-
-        [Test]
-        public void AddRemFile_WhenCalled_NavigateAsync() {
-            
-            _viewModel.AddRemFileCommand.Execute(null);
-            _pageService.Verify(r => r.PushAsync(It.IsAny<RemFileDetailPage>()));
-
         }
 
         [Test]
