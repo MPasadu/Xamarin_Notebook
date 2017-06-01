@@ -30,7 +30,7 @@ Feel free to have a look at the code. Everything should be pushed to the public 
 
 Android:
 
-![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_MainPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_DetailPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_SearchBar_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_Delete_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_Phone_Vertical.png?raw=true)
+![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_MainPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_DetailPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_SearchBar_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_Delete_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_Photo_Vertical.png?raw=true)
 
 ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_MainPage_Horizontal.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_DetailPage_Horizontal1.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/Android_DetailPage_Horizontal2.png?raw=true)
 
@@ -38,4 +38,4 @@ iOS:
 
 ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_MainPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Delete_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_DetailPage_Vertical.png?raw=true)
 
-![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Search_Horizontal.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Photo_Horizontal?raw=true)
+![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Search_Horizontal.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Photo_Horizontal.png?raw=true)
