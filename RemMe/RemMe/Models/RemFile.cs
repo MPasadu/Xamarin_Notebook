@@ -24,5 +24,7 @@ namespace RemMe.Models {
         [MaxLength(2500)]
         public string Description { get; set; }
 
+        public String ImagePath { get; set; }
+
     }
 }

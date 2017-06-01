@@ -33,19 +33,18 @@ namespace RemMe.Tests {
 
         [Test]
         public void Save_WhenCalled_SaveToDbAsync() {
-            _detailPageViewModel.RemFile.Id = 1;
-            _detailPageViewModel.RemFile.Title = "test";
-            _detailPageViewModel.RemFile.Description = "testdesc";
-            _detailPageViewModel.RemFile.Date = new System.DateTime();
-            _remFileStore.Setup(r => r.AddRemFile(_detailPageViewModel.RemFile));
+            _detailPageViewModel.Id = 1;
+            _detailPageViewModel.Title = "test";
+            _detailPageViewModel.Description = "testdesc";
+            _detailPageViewModel.Date = new System.DateTime();
 
             _detailPageViewModel.SaveCommand.Execute(null);
 
-            var remFile = _remFileStore.Object.GetRemFile(_detailPageViewModel.RemFile.Id).Result;
-            Assert.AreEqual(_detailPageViewModel.RemFile.Title, remFile.Title);
-            Assert.AreEqual(_detailPageViewModel.RemFile.Id, remFile.Id);
-            Assert.AreEqual(_detailPageViewModel.RemFile.Date, remFile.Date);
-            Assert.AreEqual(_detailPageViewModel.RemFile.Description, remFile.Description);
+            var remFile = _remFileStore.Object.GetRemFile(_detailPageViewModel.Id).Result;
+            Assert.AreEqual(_detailPageViewModel.Title, remFile.Title);
+            Assert.AreEqual(_detailPageViewModel.Id, remFile.Id);
+            Assert.AreEqual(_detailPageViewModel.Date, remFile.Date);
+            Assert.AreEqual(_detailPageViewModel.Description, remFile.Description);
         }
 
 

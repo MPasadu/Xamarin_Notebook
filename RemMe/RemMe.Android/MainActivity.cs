@@ -9,6 +9,7 @@ using Android.OS;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using Plugin.Permissions;
 
 namespace RemMe.Droid {
     [Activity(Label = "RemMe", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -27,6 +28,12 @@ namespace RemMe.Droid {
 
             LoadApplication(new App());
         }
+
+        #region Permissions
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults) {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        #endregion
 
         #region UnhandledException Catcher Methods
 

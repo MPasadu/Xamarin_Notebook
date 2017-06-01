@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RemMe.ViewModels {
+namespace RemMe.Persistence {
     /// <summary>
     /// Interface for SQLiteRemFileStore
     /// </summary>

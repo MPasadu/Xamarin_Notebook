@@ -1,4 +1,5 @@
-﻿using RemMe.Views;
+﻿using RemMe.Persistence;
+using RemMe.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -124,8 +125,7 @@ namespace RemMe.ViewModels {
         private async Task AddRemFile() {
             var viewModel = new RemFileDetailPageViewModel(new RemFileViewModel(), _remFileStore, _pageService);
             viewModel.RemFileAdded += (source, remFile) => {
-                RemFiles.Add(new RemFileViewModel(remFile));
-                
+                RemFiles.Add(new RemFileViewModel(remFile));               
             };       
 
             await this._pageService.PushAsync(new RemFileDetailPage(viewModel));
@@ -146,7 +146,7 @@ namespace RemMe.ViewModels {
                 viewModel.Title = updatedRemFile.Title;
                 viewModel.Date = updatedRemFile.Date;
                 viewModel.Description = updatedRemFile.Description;
-                
+                viewModel.ImagePath = updatedRemFile.ImagePath;
             };
 
             await _pageService.PushAsync(new RemFileDetailPage(detailPageViewModel));

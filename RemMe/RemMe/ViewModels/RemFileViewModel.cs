@@ -15,7 +15,6 @@ namespace RemMe.ViewModels {
             get { return _title; }
             set {
                 SetValue(ref _title, value);
-                OnPropertyChanged(nameof(Title));
             }
         }
 
@@ -24,12 +23,27 @@ namespace RemMe.ViewModels {
             get { return _description; }
             set {
                 SetValue(ref _description, value);
-                OnPropertyChanged(nameof(Description));
+            }
+        }
+
+        private string _imagePath;
+        public string ImagePath {
+            get { return _imagePath; }
+            set {
+                SetValue(ref _imagePath, value);
+            }
+        }
+
+        private DateTime _date;
+        public DateTime Date {
+            get { return _date; }
+            set {
+                SetValue(ref _date, value);
             }
         }
 
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+
 
         #endregion
 
@@ -43,8 +57,8 @@ namespace RemMe.ViewModels {
             this.Id = remFile.Id;
             this._description = remFile.Description;
             this._title = remFile.Title;
-            this.Date = remFile.Date;
-
+            this._date = remFile.Date;
+            this._imagePath = remFile.ImagePath;
 
         }
     }

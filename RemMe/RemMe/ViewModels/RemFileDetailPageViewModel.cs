@@ -1,4 +1,6 @@
 ﻿using RemMe.Models;
+using RemMe.Persistence;
+using RemMe.Views;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,7 +17,6 @@ namespace RemMe.ViewModels {
             get { return _title; }
             set {
                 SetValue(ref _title, value);
-                OnPropertyChanged(nameof(Title));
             }
         }
 
@@ -24,15 +25,22 @@ namespace RemMe.ViewModels {
             get { return _description; }
             set {
                 SetValue(ref _description, value);
-                OnPropertyChanged(nameof(Description));
+            }
+        }
+
+        private string _imagePath;
+        public string ImagePath {
+            get { return _imagePath; }
+            set {
+                SetValue(ref _imagePath, value);
             }
         }
 
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public RemFile RemFile { get; private set; }
 
         public ICommand SaveCommand { get; private set; }
+        public ICommand PhotoCommand { get; private set; }
 
         private readonly IPageService _pageService;
         private readonly IRemFileStore _remFileStore;
@@ -55,41 +63,68 @@ namespace RemMe.ViewModels {
             this._remFileStore = remFileStore;
             this._pageService = pageService;
 
+            UpdateViewFromRemFile(viewModel);
+
             SaveCommand = new Command(async () => await Save());
+            PhotoCommand = new Command(async () => await Photo());
+           
+        }
 
-            RemFile = new RemFile {
-                Id = viewModel.Id,
-                Title = viewModel.Title,
-                Date = viewModel.Date,
-                Description = viewModel.Description,
-
-
-            };
-            if (RemFile.Date == DateTime.MinValue) RemFile.Date = DateTime.Now;
+        /// <summary>
+        /// Update view from RemFileViewModel from MainPage
+        /// </summary>
+        /// <param name="viewModel">RemFileViewModel from MainPage</param>
+        private void UpdateViewFromRemFile(RemFileViewModel viewModel) {
+            this.Id = viewModel.Id;
+            this.Title = viewModel.Title;
+            this.Description = viewModel.Description;
+            this.ImagePath = viewModel.ImagePath;
+            this.Date = viewModel.Date;
         }
 
         #region Command Methods
+
+        /// <summary>
+        /// Go to the CameraPage to take or select a new photo.
+        /// </summary>
+        /// <returns>Task completed</returns>
+        private async Task Photo() {
+            var cameraPageViewModel = new CameraPageViewModel(_pageService);
+            cameraPageViewModel.ImageUpdated += (source, updatedImagePath) => {
+                ImagePath = updatedImagePath;
+            };
+            await _pageService.PushAsync(new CameraPage(cameraPageViewModel));
+        }
 
         /// <summary>
         /// Save changes to new or existing remFile model.
         /// </summary>
         /// <returns>Task completed</returns>
         private async Task Save() {
-            if (String.IsNullOrWhiteSpace(RemFile.Title)) {
+
+            var remFile = new RemFile {
+                Id = this.Id,
+                Title = this.Title,
+                Date = DateTime.Now,
+                Description = this.Description,
+                ImagePath = this.ImagePath,
+            };
+
+            if (string.IsNullOrWhiteSpace(remFile.Title)) {
                 await _pageService.DisplayAlert("Error", "Please enter a title.", "OK");
                 return;
             }
 
-            if (RemFile.Id == 0) {
+            if (remFile.Id == 0) {
 
-                await _remFileStore.AddRemFile(RemFile);
+                await _remFileStore.AddRemFile(remFile);
 
-                RemFileAdded?.Invoke(this, RemFile);
+                RemFileAdded?.Invoke(this, remFile);
             }
             else {
-                await _remFileStore.UpdateRemFile(RemFile);
+                await _remFileStore.UpdateRemFile(remFile);
 
-                RemFileUpdated?.Invoke(this, RemFile);
+                RemFileUpdated?.Invoke(this, remFile);
             }
 
             await _pageService.PopAsync();

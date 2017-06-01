@@ -5,10 +5,24 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Save" Command="{Binding SaveCommand}"/>
     </ContentPage.ToolbarItems>
-    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-        <Label Text="Title" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center"/>
-        <Entry BackgroundColor="WhiteSmoke" Text="{Binding Path=RemFile.Title}" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
-        <Label Text="Description" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center"/>
-        <Editor BackgroundColor="WhiteSmoke" Text="{Binding Path=RemFile.Description}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-    </StackLayout>
+    <ScrollView>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+            <Label Text="Title" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Start"/>
+            <Entry BackgroundColor="WhiteSmoke" Text="{Binding Title}" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+            <Grid BackgroundColor="WhiteSmoke" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
+                <Label BackgroundColor="Black" TextColor="White" Grid.Row="0" Grid.Column="0" Text="Add Photo" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PhotoCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Image Grid.Row="0" Grid.Column="0" Source="{Binding ImagePath}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Aspect="AspectFit">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PhotoCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <Label Text="Description" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="End"/>
+            <Editor BackgroundColor="WhiteSmoke" Text="{Binding Description}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

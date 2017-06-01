@@ -47,19 +47,17 @@
                         Factor=1}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="1">
-                            <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
-                            <Label Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy a\\t h:mm tt}'}" HorizontalOptions="Center" FontSize="12"/>
-                        </StackLayout>
-                        <ViewCell.ContextActions>
+                    <ImageCell ImageSource="{Binding ImagePath}"
+                               Text="{Binding Title}"
+                               Detail="{Binding Date, StringFormat='{}{0:dd/MM/yyyy a\\t h:mm tt}'}">
+                        <ImageCell.ContextActions>
                             <MenuItem 
 							Text="Delete" 
 							IsDestructive="true" 
 							Command="{Binding Source={x:Reference page}, Path=ViewModel.DeleteRemFileCommand}"
 							CommandParameter="{Binding .}" />
-                        </ViewCell.ContextActions>
-                    </ViewCell>
+                        </ImageCell.ContextActions>
+                    </ImageCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
