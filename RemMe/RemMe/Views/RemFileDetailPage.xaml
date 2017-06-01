@@ -9,19 +9,19 @@
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
             <Label Text="Title" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Start"/>
             <Entry BackgroundColor="WhiteSmoke" Text="{Binding Title}" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
-            <Grid BackgroundColor="WhiteSmoke" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
-                <Label BackgroundColor="Black" TextColor="White" Grid.Row="0" Grid.Column="0" Text="Add Photo" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+            <StackLayout BackgroundColor="WhiteSmoke" HorizontalOptions="Fill" VerticalOptions="Start" Orientation="Vertical">
+                <Label BackgroundColor="Black" TextColor="White" Grid.Row="0" Grid.Column="0" Text="Add Photo" FontSize="Large" HorizontalOptions="Fill" VerticalOptions="Start" IsVisible="{Binding ImagePlaceHolderIsVisible}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding PhotoCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Image Grid.Row="0" Grid.Column="0" Source="{Binding ImagePath}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Aspect="AspectFit">
+                <Image Grid.Row="0" Grid.Column="0" Source="{Binding ImagePath}" HorizontalOptions="Fill" VerticalOptions="Start" Aspect="AspectFit">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding PhotoCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
-            </Grid>
-            <Label Text="Description" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="End"/>
+            </StackLayout>
+            <Label Text="Description" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Start"/>
             <Editor BackgroundColor="WhiteSmoke" Text="{Binding Description}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
         </StackLayout>
     </ScrollView>

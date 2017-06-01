@@ -9,11 +9,14 @@ Showcasing advanced coding in a simple notebook cross-platform app in Xamarin.Fo
 * MVVM (without framework)
 * Sqlite
 * Unit testing with nunit and Moq.
+* Camera and gallery functions
+* Permissions
 
 
 #### Basic feature list:
 
- * Add notes (title, description, date and time of creation)
+ * Add notes (title, photo, description, date and time of creation)
+ * Photo for note from camera or gallery
  * Delete note
  * Edit note
  * List all notes
@@ -35,4 +38,4 @@ iOS:
 
 ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_MainPage_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Delete_Vertical.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_DetailPage_Vertical.png?raw=true)
 
-![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Search_Horizontal.png?raw=true)
+![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Search_Horizontal.png?raw=true) ![](https://github.com/MPasadu/Xamarin_Notebook/blob/master/screenshots/IOS_Photo_Horizontal?raw=true)

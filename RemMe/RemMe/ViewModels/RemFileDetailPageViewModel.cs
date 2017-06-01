@@ -12,6 +12,14 @@ namespace RemMe.ViewModels {
 
         #region Fields
 
+        private bool _imagePlaceHolderIsVisible;
+        public bool ImagePlaceHolderIsVisible {
+            get { return _imagePlaceHolderIsVisible; }
+            set {
+                SetValue(ref _imagePlaceHolderIsVisible, value);
+            }
+        }
+
         private string _title;
         public string Title {
             get { return _title; }
@@ -33,6 +41,8 @@ namespace RemMe.ViewModels {
             get { return _imagePath; }
             set {
                 SetValue(ref _imagePath, value);
+                if (_imagePath == null) ImagePlaceHolderIsVisible = true;
+                else ImagePlaceHolderIsVisible = false;
             }
         }
 
