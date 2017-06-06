@@ -9,9 +9,7 @@ Showcasing advanced coding in a simple notebook cross-platform app in Xamarin.Fo
 * MVVM (without framework)
 * Sqlite
 * Unit testing with nunit and Moq.
-* Camera and gallery functions
-* Permissions
-
+* XamarinComponents: Media and Permissions 
 
 #### Basic feature list:
 
