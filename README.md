@@ -1,7 +1,7 @@
 # Xamarin_Notebook
 
 ## Description
-Showcasing advanced coding in a simple notebook cross-platform app in Xamarin.Forms.
+Showcasing advanced coding in a simple notebook cross-platform app in Xamarin.Forms. This app was originally created for my girlfriend who likes to cut out cooking recipes and collect bookmarks to online recipes. Finding a specific recipe was tedious, so I created this app. Now she takes pictures (no more cutting), and copies the recipes from the internet into the app. The search function allows her to find recipes easier. This app may be extended whenever she finds bugs or there are ideas for additional features.
 
 #### Technologies used:
 
