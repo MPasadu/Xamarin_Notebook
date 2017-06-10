@@ -5,7 +5,7 @@ Showcasing advanced coding in a simple notebook cross-platform app in Xamarin.Fo
 
 #### Technologies used:
 
-* Xamarin.Forms
+* Xamarin.Forms, C#, XAML
 * MVVM (without framework)
 * Sqlite
 * Unit testing with nunit and Moq.
